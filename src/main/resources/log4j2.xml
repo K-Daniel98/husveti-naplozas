@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg - Index: %X{iterationIndex} %n"/>
+        </Console>
+        <File name="gyorfi" fileName="Győrfi_Pál.log " bufferedIO="false" advertise="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg - Index: %X{iterationIndex} %n"/>
+            <TimeFilter start="20:00:00" end="05:00:00" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="kijelentesek" fileName="kijelentesek.log " bufferedIO="false" advertise="true">
+            <MarkerFilter marker="KIJELENTES" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg - Index: %X{iterationIndex} %n"/>
+        </File>
+        <File name="kerdesek" fileName="kerdesek.log " bufferedIO="false" advertise="true">
+            <MarkerFilter marker="KERDES" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg - Index: %X{iterationIndex} %n"/>
+        </File>
+        <File name="unmarked" fileName="unmarked.log " bufferedIO="false" advertise="true">
+            <NoMarkerFilter onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg - Index: %X{iterationIndex} %n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="kijelentesek"/>
+            <AppenderRef ref="kerdesek"/>
+            <AppenderRef ref="unmarked"/>
+            <AppenderRef ref="gyorfi"/>
+        </Root>
+    </Loggers>
+</Configuration>
